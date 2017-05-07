@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
 
 <dom-module id="elbodegon-app">
   <template>
@@ -47,16 +48,12 @@
 
 <paper-card heading="[[prop1]]" elevation="0" animated-shadow="false">
 
-    <form id="form">
-        <div class="card-content">
+    <iron-form id="form" method="post" action="/login">
             <paper-input label="Email"></paper-input>
             <paper-input label="Contraseña"></paper-input>
-        </div>
-        <div class="card-actions">
-            <paper-button  raised id="login">Continuar</paper-button>
-        </div>
+            <paper-button raised>Submit</paper-button>
 
-    </form>
+    </iron-form>
 
 </paper-card>
   </template>
@@ -64,6 +61,8 @@
   <script>
     /** @polymerElement */
     class ElbodegonApp extends Polymer.Element {
+
+
       static get is() { return 'elbodegon-app'; }
       static get properties() {
         return {
@@ -71,9 +70,22 @@
             type: String,
             value: 'Iniciar Sesión'
           }
+
         };
+
       }
+        connectedCallback() {
+            super.connectedCallback();
+            console.log("I only appear one time, connected callback");
+            const form = this.$['form'];
+            console.log(form);
+            form.addEventListener('iron-form-presubmit', function (event) {
+                event.preventDefault();
+                console.log("I'm called two times");
+            });
+        }
     }
+
 
     window.customElements.define(ElbodegonApp.is, ElbodegonApp);
   </script>
