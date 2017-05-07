@@ -1,0 +1,7 @@
+{
+  "name": "elbodegon",
+  "short_name": "elbodegon",
+  "description": "clasificados",
+  "start_url": "/",
+  "display": "standalone"
+}

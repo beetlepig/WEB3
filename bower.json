@@ -1,0 +1,16 @@
+{
+  "name": "elbodegon",
+  "description": "clasificados",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0-rc.3",
+    "iron-elements": "1.0.10",
+    "paper-button": "PolymerElements/paper-button#2.0-preview",
+    "paper-card": "PolymerElements/paper-card#2.0-preview",
+    "paper-input": "PolymerElements/paper-input#2.0-preview"
+  },
+  "devDependencies": {
+    "web-component-tester": "^6.0.0-prerelease.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.7"
+  }
+}
