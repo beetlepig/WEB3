@@ -48,11 +48,14 @@
 
 <paper-card heading="[[prop1]]" elevation="0" animated-shadow="false">
 
-    <iron-form id="form" method="post" action="/login">
+    <iron-form id="form">
+
+    <form method="post" action="/">
             <paper-input label="Email"></paper-input>
             <paper-input label="Contraseña"></paper-input>
-            <paper-button raised>Submit</paper-button>
+            <paper-button raised on-click="submitForm">Submit</paper-button>
 
+    </form>
     </iron-form>
 
 </paper-card>
@@ -79,11 +82,19 @@
             console.log("I only appear one time, connected callback");
             const form = this.$['form'];
             console.log(form);
-            form.addEventListener('iron-form-presubmit', function (event) {
+            form.addEventListener('iron-form-presubmit', (event)=> {
                 event.preventDefault();
                 console.log("I'm called two times");
             });
+
         }
+
+
+        submitForm() {
+        this.$['form'].submit();
+    }
+
+
     }
 
 
