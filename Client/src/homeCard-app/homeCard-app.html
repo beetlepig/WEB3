@@ -1,0 +1,89 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+
+<dom-module id="homecard-app">
+    <template>
+        <style>
+            :host {
+                display: block;
+                text-align: left;
+                width: 84%;
+                height: 100%;
+                margin-left: 8%;
+                background-color: rgba(255,255,255,0.1);
+            }
+            paper-card{
+                --paper-card-background-color: white;
+                margin: 3%;
+                width: 27%;
+            }
+           .imagen{
+                height: 300px;
+               width: 100%;
+
+            }
+        </style>
+
+        <template is="dom-repeat" items="{{jsondata}}">
+        <paper-card heading="[[item.titulo]]" elevation="0" animated-shadow="false">
+            <div class="imagen" style="background: url('http://localhost:3000/Posts/[[item.imgsrc]]') no-repeat center / contain">
+
+            </div>
+            <div class="info">
+                <h5>[[item.contenido]]</h5>
+                <h3>Valor: [[item.target]]</h3>
+                <h4>Contacto: [[item.id_usuario]]</h4>
+                <h5>categoria</h5>
+            </div>
+
+        </paper-card>
+        </template>
+
+
+        <iron-ajax
+                auto
+                url="http://localhost:3000/api/posts"
+                handle-as="json"
+                last-response="{{jsondata}}"
+                on-response="hresponse"
+        ></iron-ajax>
+
+    </template>
+
+    <script>
+        /** @polymerElement */
+        class HomeCardApp extends Polymer.Element {
+
+
+            static get is() { return 'homecard-app'; }
+            static get properties() {
+                return {
+                    prop1: {
+                        type: String,
+                        value: 'Titulo'
+                    }
+
+                };
+
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                console.log("I only appear one time, connected callback");
+            }
+
+
+            hresponse (request) {
+            console.log(request.detail.response);
+       //     this.updateStyles({'--homecard-app-background': 'url("http://localhost:3000/'+[[jsondata.imgsrc]]+'") no-repeat center / contain'});
+        }
+        }
+
+
+        window.customElements.define(HomeCardApp.is, HomeCardApp);
+    </script>
+</dom-module>

@@ -1,0 +1,102 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<!--<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">-->
+<!--<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">-->
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+
+<dom-module id="elbodegon-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+          text-align: center;
+          width: 24%;
+      }
+        paper-card{
+            text-align: left;
+            padding: 0 8% 8% 8%;
+            width: 100%;
+            --paper-card-header-color: white;
+            --paper-card-background-color: tranparent;
+        }
+
+        paper-card .card-actions {
+            padding-top: 5%;
+            text-align: left;
+
+        }
+
+        paper-button{
+            background-color: white;
+        }
+
+      paper-input {
+          --paper-input-container-color: rgba(255,255,255,0.8);
+          --paper-input-container-focus-color: white;
+          --paper-input-container-invalid-color: green;
+          --paper-input-container-input-color: white;
+      }
+
+      h3{
+          color: white;
+          font-size: 1.6vw;
+      }
+    </style>
+
+
+<paper-card heading="[[prop1]]" elevation="0" animated-shadow="false">
+
+    <iron-form id="form">
+
+    <form method="post" action="/">
+            <paper-input label="Email"></paper-input>
+            <paper-input label="Contraseña"></paper-input>
+            <paper-button raised on-click="submitForm">Submit</paper-button>
+
+    </form>
+    </iron-form>
+
+</paper-card>
+  </template>
+
+  <script>
+    /** @polymerElement */
+    class ElbodegonApp extends Polymer.Element {
+
+
+      static get is() { return 'elbodegon-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'Iniciar Sesión'
+          }
+
+        };
+
+      }
+        connectedCallback() {
+            super.connectedCallback();
+            console.log("I only appear one time, connected callback");
+            const form = this.$['form'];
+            console.log(form);
+            form.addEventListener('iron-form-presubmit', (event)=> {
+                event.preventDefault();
+                console.log("I'm called two times");
+            });
+        }
+
+
+        submitForm() {
+        this.$['form'].submit();
+    }
+
+
+    }
+
+
+    window.customElements.define(ElbodegonApp.is, ElbodegonApp);
+  </script>
+</dom-module>
