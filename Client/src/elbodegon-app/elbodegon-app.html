@@ -50,15 +50,26 @@
 
     <iron-form id="form">
 
-    <form method="post" action="/">
-            <paper-input label="Email"></paper-input>
-            <paper-input label="Contraseña"></paper-input>
-            <paper-button raised on-click="submitForm">Submit</paper-button>
+    <form method="post" id="getiar" action="/">
+            <paper-input id="nombresito" label="Email"></paper-input>
+            <paper-input id="contrasenita" label="Contraseña"></paper-input>
+            <paper-button  raised on-click="submitForm">Submit</paper-button>
 
     </form>
     </iron-form>
 
 </paper-card>
+
+      <iron-ajax
+              id="requestUser"
+              url="http://localhost:3000/api/users"
+              method="POST"
+              handle-as="json"
+              content-type="application/json"
+              on-response="handleResponse">
+      </iron-ajax>
+
+      <iron-request id="xhr"></iron-request>
   </template>
 
   <script>
@@ -72,6 +83,9 @@
           prop1: {
             type: String,
             value: 'Iniciar Sesión'
+          },
+          datos:  {
+              type: Array
           }
 
         };
@@ -85,8 +99,27 @@
             form.addEventListener('iron-form-presubmit', (event)=> {
                 event.preventDefault();
                 console.log("I'm called two times");
+                let formito= new FormData();
+                let nombre= this.$.nombresito.value;
+                let contrasenita= this.$.contrasenita.value;
+                formito.append("correo", nombre);
+                formito.append("contrasena", contrasenita);
+                console.log(nombre+"  "+contrasenita);
+                this.$.xhr.send({
+                                    url: "http://localhost:3000/api/users",
+                                    body: formito,
+                                    method: "POST"
+
+                });
+
             });
         }
+
+        handleResponse (data) {
+
+        this.datos = data.detail.response;
+        console.log(this.datos);
+    }
 
 
         submitForm() {
