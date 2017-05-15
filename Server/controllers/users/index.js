@@ -72,7 +72,7 @@ let getUsers = function (req, res) {
                 console.log("Problema con la base de datos");
                 respuestaErr= "Problema con la base de datos";
             }
-            res.status(500).json(respuestaErr);
+            res.status(201).json(respuestaErr);
         } else {
             console.log(usuario);
             res.status(200).json({

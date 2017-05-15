@@ -54,22 +54,14 @@
             <paper-input id="nombresito" label="Email"></paper-input>
             <paper-input id="contrasenita" label="Contraseña"></paper-input>
             <paper-button  raised on-click="submitForm">Submit</paper-button>
+            <h3>[[mensajeError]]</h3>
 
     </form>
     </iron-form>
 
 </paper-card>
 
-      <iron-ajax
-              id="requestUser"
-              url="http://localhost:3000/api/users"
-              method="POST"
-              handle-as="json"
-              content-type="application/json"
-              on-response="handleResponse">
-      </iron-ajax>
-
-      <iron-request id="xhr"></iron-request>
+      <iron-ajax id="ajaxPost" url="http://localhost:3000/api/users" method="POST" on-response="handleResponse"></iron-ajax>
   </template>
 
   <script>
@@ -86,7 +78,10 @@
           },
           datos:  {
               type: Array
-          }
+          },
+            mensajeError: {
+              type: String
+            }
 
         };
 
@@ -105,20 +100,28 @@
                 formito.append("correo", nombre);
                 formito.append("contrasena", contrasenita);
                 console.log(nombre+"  "+contrasenita);
-                this.$.xhr.send({
-                                    url: "http://localhost:3000/api/users",
-                                    body: formito,
-                                    method: "POST"
-
-                });
-
+                this.$.ajaxPost.body = formito;
+                this.$.ajaxPost.generateRequest();
             });
+
+
         }
 
-        handleResponse (data) {
+        handleResponse (e,data) {
+       if(data.status===200) {
+           this.datos = data.response;
+       //    console.log(this.datos);
+           console.log(data.status);
+           sessionStorage.datos=JSON.stringify(this.datos);
+           console.log(JSON.parse(sessionStorage.datos));
+           window.location.replace('./home.html');
 
-        this.datos = data.detail.response;
-        console.log(this.datos);
+       }else if(data.status===201){
+           this.mensajeError= data.response;
+           console.log(this.mensajeError);
+           console.log(data.status);
+       }
+
     }
 
 
