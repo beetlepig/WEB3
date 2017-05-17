@@ -16,37 +16,44 @@
 </head>
 <body>
 
-<form method="post" action="/post/create" id="formulario">
+<form method="post" action="http://localhost:3000/api/posts/create" id="formulario">
     <h2>Publicar clasificado</h2>
     <ul>
      <li> <label for="titulin">Titulo</label>
-        <input placeholder="Jonny Walker" id="titulin">
+        <input placeholder="Jonny Walker" id="titulin" name="titulo">
      </li>
 
         <li>
         <label for="contenidin">Detalles del articulo</label>
-        <input placeholder="Wisky de 15 años..." id="contenidin">
+        <input placeholder="Wisky de 15 años..." id="contenidin" name="contenido">
         </li>
 
         <li>
             <label for="precio">Valor</label>
-            <input placeholder="20 mil dolares" id="precio">
+            <input placeholder="20 mil dolares" id="precio" name="target">
         </li>
 
         <li>
             <label for="contactin">Contacto</label>
-            <input placeholder="lataberna@licor.com" id="contactin">
+            <input placeholder="lataberna@licor.com" id="contactin" name="id_usuario" disabled>
         </li>
 
         <li>
             <label for="categorin">Categoria</label>
-            <input placeholder="Wisky" id="categorin">
+            <input placeholder="Wisky" id="categorin" name="categoria">
         </li>
+
+        <li>
+            <label for="imagensin">Imagen</label>
+            <input type="file" id="imagensin" name="profilePic">
+        </li>
+
+        <button type="submit">Enviar</button>
 
     </ul>
 
 </form>
 
-
+<script src="js/clasificadopost.js" type="text/javascript"></script>
 </body>
 </html>

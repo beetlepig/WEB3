@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=latin-ext');
+
 html{
     height: 100%;
 
@@ -14,7 +16,17 @@ body{
     left: 50%;
     top: 20%;
     margin-left: -16%;
-    width: 24%;
+    width: 22%;
     height: 60%;
     background-color: white;
+    padding: 2%;
+}
+
+#formulario ul {
+    list-style: none;
+    margin-top: 10%;
+}
+
+#formulario ul li {
+    margin-top: 5%;
 }

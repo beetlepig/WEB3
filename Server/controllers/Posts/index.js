@@ -22,8 +22,9 @@ let createPosts = function (req, res) {
     let titulo= req.body.titulo;
     let contenido= req.body.contenido;
     let subtitulo = req.body.subtitulo;
-    let target = 30000;
+    let target = req.body.target;
     let current = 0;
+    let categoria= req.body.categoria;
     let extencion = req.file.originalname.split(".")[req.file.originalname.split(".").length -1];
     let titulosinpuntos= titulo.replace(':', '');
     let titulo_final= titulosinpuntos.replace(/\s+/g, '');
@@ -59,7 +60,7 @@ let createPosts = function (req, res) {
 
     let src= titulo_final+"."+id_usuario+'/' + titulo_final+"_"+id_usuario+"_PostImg" +"."+extencion;
     console.log(src);
-    DB.create(id_usuario,titulo, subtitulo, contenido, target, current , src, function(err, result) {
+    DB.create(id_usuario,titulo, subtitulo, contenido, target, current , src, categoria, function(err, result) {
 
         if (err) {
             console.log(err);

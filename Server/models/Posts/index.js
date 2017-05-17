@@ -22,8 +22,8 @@ exports.getAll = function(done) {
 };
 
 
-exports.create = function(id_usuario,titulo, subtitulo, contenido, target, current , imgsrc , done) {
-    let values= [id_usuario,titulo,contenido , subtitulo, target, current, imgsrc];
+exports.create = function(id_usuario,titulo, subtitulo, contenido, target, current , imgsrc , categoria, done) {
+    let values= [id_usuario,titulo,contenido , subtitulo, target, current, imgsrc, categoria];
 
     db.get().getConnection(function (err,connection) {
         if (err){
@@ -31,7 +31,7 @@ exports.create = function(id_usuario,titulo, subtitulo, contenido, target, curre
             console.log(err);
             return done(err);
         } else {
-            connection.query('INSERT INTO posts (id_usuario, titulo, contenido, subtitulo, target, current, imgsrc) VALUES(?, ?, ?, ?, ?, ?, ?)', values, function(err, result) {
+            connection.query('INSERT INTO posts (id_usuario, titulo, contenido, subtitulo, target, current, imgsrc, categoria) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', values, function(err, result) {
                 if (err)
                     return done(err);
                 console.log(err);
