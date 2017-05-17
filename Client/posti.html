@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>elbodegon</title>
+    <meta name="description" content="elbodegon description">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="manifest.json">
+
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/posteo.css"/>
+</head>
+<body>
+
+<form method="post" action="/post/create" id="formulario">
+    <h2>Publicar clasificado</h2>
+    <ul>
+     <li> <label for="titulin">Titulo</label>
+        <input placeholder="Jonny Walker" id="titulin">
+     </li>
+
+        <li>
+        <label for="contenidin">Detalles del articulo</label>
+        <input placeholder="Wisky de 15 años..." id="contenidin">
+        </li>
+
+        <li>
+            <label for="precio">Valor</label>
+            <input placeholder="20 mil dolares" id="precio">
+        </li>
+
+        <li>
+            <label for="contactin">Contacto</label>
+            <input placeholder="lataberna@licor.com" id="contactin">
+        </li>
+
+        <li>
+            <label for="categorin">Categoria</label>
+            <input placeholder="Wisky" id="categorin">
+        </li>
+
+    </ul>
+
+</form>
+
+
+</body>
+</html>

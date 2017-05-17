@@ -8,16 +8,24 @@
     <meta name="description" content="elbodegon description">
 
     <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="/src/homeCard-app/homeCard-app.html">
+    <link rel="import" href="src/homeCard-app/homeCard-app.html">
 
-    <link rel="stylesheet" type="text/css" href="css/home.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/home.css"/>
+
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html">
 </head>
 <body>
+<div class="botonsin" id="clickpape" onclick="clickbuton()"><iron-icon icon="add" style="position: absolute; left: 25%; top: 25%; width: 50%; height: 50%; color: rgb(255,255,255)"></iron-icon></div>
+
 <homeCard-app></homeCard-app>
+
+
 
 <script src="js/home.js" type="text/javascript"></script>
 

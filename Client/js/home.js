@@ -1,6 +1,4 @@
-/**
- * Created by sky_k on 14/05/2017.
- */
+
 let id_usu;
 let profilepic;
 
@@ -12,3 +10,10 @@ if(!sessionStorage.datos){
 
     console.log("entro: " +profilepic)
 }
+
+function clickbuton() {
+    console.log("nigger");
+    window.location.replace("/posti.html");
+}
+
+

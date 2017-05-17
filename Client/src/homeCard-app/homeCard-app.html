@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
 
 <dom-module id="homecard-app">
@@ -15,7 +16,7 @@
                 width: 84%;
                 height: 100%;
                 margin-left: 8%;
-                background-color: rgba(255,255,255,0.1);
+
             }
             paper-card{
                 --paper-card-background-color: white;
@@ -38,7 +39,7 @@
                 <h5>[[item.contenido]]</h5>
                 <h3>Valor: [[item.target]]</h3>
                 <h4>Contacto: [[item.id_usuario]]</h4>
-                <h5>categoria</h5>
+                <h5>Categoria: [[item.categoria]]</h5>
             </div>
 
         </paper-card>

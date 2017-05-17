@@ -7,7 +7,9 @@
     "iron-elements": "1.0.10",
     "paper-button": "PolymerElements/paper-button#2.0-preview",
     "paper-card": "PolymerElements/paper-card#2.0-preview",
-    "paper-input": "PolymerElements/paper-input#2.0-preview"
+    "paper-input": "PolymerElements/paper-input#2.0-preview",
+    "paper-icon-button": "^2.0.0",
+    "iron-icons": "^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0-prerelease.5",
